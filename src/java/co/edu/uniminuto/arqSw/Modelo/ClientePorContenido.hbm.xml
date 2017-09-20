@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.ClientePorContenido" table="cliente_por_contenido" catalog="video_monito_db" optimistic-lock="version">
+        <composite-id name="id" class="co.edu.uniminuto.arqSw.Modelo.ClientePorContenidoId">
+            <key-property name="idCliente" type="int">
+                <column name="idCliente" />
+            </key-property>
+            <key-property name="idContenido" type="int">
+                <column name="idContenido" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="cliente" class="co.edu.uniminuto.arqSw.Modelo.Cliente" update="false" insert="false" fetch="select">
+            <column name="idCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="contenido" class="co.edu.uniminuto.arqSw.Modelo.Contenido" update="false" insert="false" fetch="select">
+            <column name="idContenido" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

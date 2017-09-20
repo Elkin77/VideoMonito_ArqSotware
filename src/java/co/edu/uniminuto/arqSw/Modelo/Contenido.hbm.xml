@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Contenido" table="contenido" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idContenido" type="java.lang.Integer">
+            <column name="idContenido" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="proveedor" class="co.edu.uniminuto.arqSw.Modelo.Proveedor" fetch="select">
+            <column name="idProveedor" not-null="true" />
+        </many-to-one>
+        <property name="isan" type="string">
+            <column name="ISAN" length="45" not-null="true" />
+        </property>
+        <property name="titulo" type="string">
+            <column name="titulo" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+        <set name="series" table="serie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idContenido" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.Serie" />
+        </set>
+        <one-to-one name="video" class="co.edu.uniminuto.arqSw.Modelo.Video"></one-to-one>
+        <set name="clientePorContenidos" table="cliente_por_contenido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idContenido" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.ClientePorContenido" />
+        </set>
+        <set name="coleccions" table="coleccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idContenido" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.Coleccion" />
+        </set>
+    </class>
+</hibernate-mapping>

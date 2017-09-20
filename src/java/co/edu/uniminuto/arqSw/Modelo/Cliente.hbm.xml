@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Cliente" table="cliente" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idCliente" type="java.lang.Integer">
+            <column name="idCliente" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="documento" type="string">
+            <column name="documento" length="45" not-null="true" />
+        </property>
+        <property name="fechaIngreso" type="date">
+            <column name="fecha_Ingreso" length="10" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="45" not-null="true" />
+        </property>
+        <property name="referido" type="string">
+            <column name="referido" length="45" not-null="true" />
+        </property>
+        <property name="puntos" type="int">
+            <column name="puntos" not-null="true" />
+        </property>
+        <set name="clientePorContenidos" table="cliente_por_contenido" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.ClientePorContenido" />
+        </set>
+        <set name="clientePorValoracions" table="cliente_por_valoracion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.ClientePorValoracion" />
+        </set>
+        <set name="transaccions" table="transaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCliente" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.Transaccion" />
+        </set>
+    </class>
+</hibernate-mapping>

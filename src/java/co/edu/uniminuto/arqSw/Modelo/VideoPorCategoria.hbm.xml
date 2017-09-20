@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.VideoPorCategoria" table="video_por_categoria" catalog="video_monito_db" optimistic-lock="version">
+        <composite-id name="id" class="co.edu.uniminuto.arqSw.Modelo.VideoPorCategoriaId">
+            <key-property name="idVideo" type="int">
+                <column name="idVideo" />
+            </key-property>
+            <key-property name="idCategoria" type="int">
+                <column name="idCategoria" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="categoria" class="co.edu.uniminuto.arqSw.Modelo.Categoria" update="false" insert="false" fetch="select">
+            <column name="idCategoria" not-null="true" />
+        </many-to-one>
+        <many-to-one name="video" class="co.edu.uniminuto.arqSw.Modelo.Video" update="false" insert="false" fetch="select">
+            <column name="idVideo" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

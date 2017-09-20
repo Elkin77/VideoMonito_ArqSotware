@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/video_monito_db?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Contenido.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/MedioPago.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Proveedor.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Transaccion.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/ClientePorContenido.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Video.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Cliente.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Valoracion.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Serie.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Idioma.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/ClientePorValoracion.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Coleccion.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/VideoPorCategoria.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Persona.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/VideoPorIdioma.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/VideoPorPersona.hbm.xml"/>
+    <mapping resource="co/edu/uniminuto/arqSw/Modelo/Categoria.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

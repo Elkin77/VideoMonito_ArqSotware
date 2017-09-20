@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Transaccion" table="transaccion" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idTransaccion" type="java.lang.Integer">
+            <column name="idTransaccion" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="co.edu.uniminuto.arqSw.Modelo.Cliente" fetch="select">
+            <column name="idCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="medioPago" class="co.edu.uniminuto.arqSw.Modelo.MedioPago" fetch="select">
+            <column name="idMedioPago" not-null="true" />
+        </many-to-one>
+        <property name="fechaTransaccion" type="date">
+            <column name="fechaTransaccion" length="10" not-null="true" />
+        </property>
+        <property name="tipoTransaccion" type="string">
+            <column name="tipo_Transaccion" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

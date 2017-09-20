@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Persona" table="persona" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idPersona" type="java.lang.Integer">
+            <column name="idPersona" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
+        </property>
+        <property name="papelVideo" type="string">
+            <column name="papelVideo" length="45" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" not-null="true" />
+        </property>
+        <property name="edad" type="int">
+            <column name="edad" not-null="true" />
+        </property>
+        <property name="pais" type="string">
+            <column name="pais" length="45" not-null="true" />
+        </property>
+        <property name="premios" type="string">
+            <column name="premios" length="45" not-null="true" />
+        </property>
+        <set name="videoPorPersonas" table="video_por_persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPersona" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.VideoPorPersona" />
+        </set>
+    </class>
+</hibernate-mapping>

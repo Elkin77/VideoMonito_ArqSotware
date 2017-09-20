@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Idioma" table="idioma" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idIdioma" type="java.lang.Integer">
+            <column name="idIdioma" />
+            <generator class="identity" />
+        </id>
+        <property name="lenguaje" type="string">
+            <column name="lenguaje" length="45" not-null="true" />
+        </property>
+        <property name="subtitulos" type="string">
+            <column name="subtitulos" length="45" not-null="true" />
+        </property>
+        <property name="doblaje" type="string">
+            <column name="doblaje" length="45" not-null="true" />
+        </property>
+        <set name="videoPorIdiomas" table="video_por_idioma" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idIdioma" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.VideoPorIdioma" />
+        </set>
+    </class>
+</hibernate-mapping>

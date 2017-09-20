@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Serie" table="serie" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idSerie" type="java.lang.Integer">
+            <column name="idSerie" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="contenido" class="co.edu.uniminuto.arqSw.Modelo.Contenido" fetch="select">
+            <column name="idContenido" not-null="true" />
+        </many-to-one>
+        <property name="temporada" type="string">
+            <column name="temporada" length="45" not-null="true" />
+        </property>
+        <set name="videos" table="video" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idSerie" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.Video" />
+        </set>
+    </class>
+</hibernate-mapping>

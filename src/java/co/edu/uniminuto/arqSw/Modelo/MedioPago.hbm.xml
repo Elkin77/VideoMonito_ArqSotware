@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.MedioPago" table="medio_pago" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idMedioPago" type="java.lang.Integer">
+            <column name="idMedioPago" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="45" not-null="true" />
+        </property>
+        <property name="numCuenta" type="int">
+            <column name="numCuenta" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="cvr" type="string">
+            <column name="CVR" length="45" not-null="true" />
+        </property>
+        <property name="yearVencimiento" type="string">
+            <column name="yearVencimiento" length="45" not-null="true" />
+        </property>
+        <set name="transaccions" table="transaccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idMedioPago" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.Transaccion" />
+        </set>
+    </class>
+</hibernate-mapping>

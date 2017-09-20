@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-sep-2017 0:59:48 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.Modelo.Video" table="video" catalog="video_monito_db" optimistic-lock="version">
+        <id name="idVideo" type="java.lang.Integer">
+            <column name="idVideo" />
+            <generator class="foreign">
+                <param name="property">contenido</param>
+            </generator>
+        </id>
+        <many-to-one name="coleccion" class="co.edu.uniminuto.arqSw.Modelo.Coleccion" fetch="select">
+            <column name="idColeccion" not-null="true" />
+        </many-to-one>
+        <one-to-one name="contenido" class="co.edu.uniminuto.arqSw.Modelo.Contenido" constrained="true"></one-to-one>
+        <many-to-one name="serie" class="co.edu.uniminuto.arqSw.Modelo.Serie" fetch="select">
+            <column name="idSerie" not-null="true" />
+        </many-to-one>
+        <property name="yearProduccion" type="string">
+            <column name="yearProduccion" length="45" not-null="true" />
+        </property>
+        <property name="duracion" type="string">
+            <column name="duracion" length="45" not-null="true" />
+        </property>
+        <property name="clasificacion" type="string">
+            <column name="clasificacion" length="45" not-null="true" />
+        </property>
+        <property name="idContenido" type="int">
+            <column name="idContenido" not-null="true" />
+        </property>
+        <set name="valoracions" table="valoracion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.Valoracion" />
+        </set>
+        <set name="videoPorCategorias" table="video_por_categoria" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.VideoPorCategoria" />
+        </set>
+        <set name="videoPorIdiomas" table="video_por_idioma" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.VideoPorIdioma" />
+        </set>
+        <set name="videoPorPersonas" table="video_por_persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.Modelo.VideoPorPersona" />
+        </set>
+    </class>
+</hibernate-mapping>
