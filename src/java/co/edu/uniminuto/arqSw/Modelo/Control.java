@@ -18,7 +18,7 @@ import org.hibernate.Transaction;
  * @author Ep77
  */
 public class Control {
-
+//control
     public ArrayList<Cliente> getUsuarios() {
 
         SessionFactory sesion = HibernateUtil.getSessionFactory();
